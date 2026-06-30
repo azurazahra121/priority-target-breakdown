@@ -346,6 +346,11 @@ export default function PriorityTargetBreakdown() {
     }
   };
 
+  // Auto-sync on first load — pulls live Notion data immediately so a manual tap and a refresh behave the same
+  useEffect(() => {
+    fetchFromNotion();
+  }, []);
+
   const handleTaskToggle = (taskId) => {
     setGoals(prev => prev.map(g => ({
       ...g,
